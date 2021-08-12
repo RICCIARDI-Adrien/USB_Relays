@@ -1,0 +1,432 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 3
+Title "USB UART"
+Date "2021-08-12"
+Rev ""
+Comp "(C) Adrien RICCIARDI"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Interface_USB:FT230XS U?
+U 1 1 61165087
+P 6600 3950
+AR Path="/61165087" Ref="U?"  Part="1" 
+AR Path="/611612DA/61165087" Ref="U?"  Part="1" 
+F 0 "U?" H 7000 3300 50  0000 C CNN
+F 1 "FT230XS" H 7100 3200 50  0000 C CNN
+F 2 "Package_SO:SSOP-16_3.9x4.9mm_P0.635mm" H 7600 3350 50  0001 C CNN
+F 3 "https://www.ftdichip.com/Support/Documents/DataSheets/ICs/DS_FT230X.pdf" H 6600 3950 50  0001 C CNN
+	1    6600 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6116508E
+P 4700 3850
+AR Path="/6116508E" Ref="R?"  Part="1" 
+AR Path="/611612DA/6116508E" Ref="R?"  Part="1" 
+F 0 "R?" V 4403 3850 50  0000 C CNN
+F 1 "27" V 4494 3850 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4630 3850 50  0001 C CNN
+F 3 "~" H 4700 3850 50  0001 C CNN
+F 4 "1%" V 4585 3850 50  0000 C CNN "Value2"
+	1    4700 3850
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61165095
+P 4700 3950
+AR Path="/61165095" Ref="R?"  Part="1" 
+AR Path="/611612DA/61165095" Ref="R?"  Part="1" 
+F 0 "R?" V 4815 3950 50  0000 C CNN
+F 1 "27" V 4906 3950 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4630 3950 50  0001 C CNN
+F 3 "~" H 4700 3950 50  0001 C CNN
+F 4 "1%" V 4997 3950 50  0000 C CNN "Value2"
+	1    4700 3950
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6116509D
+P 3900 4500
+AR Path="/6116509D" Ref="C?"  Part="1" 
+AR Path="/611612DA/6116509D" Ref="C?"  Part="1" 
+F 0 "C?" H 3786 4637 50  0000 R CNN
+F 1 "47p" H 3786 4546 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 3938 4350 50  0001 C CNN
+F 3 "~" H 3900 4500 50  0001 C CNN
+F 4 "16V" H 3786 4455 50  0000 R CNN "Value2"
+F 5 "X7R" H 3786 4364 50  0000 R CNN "Value3"
+	1    3900 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 611650A5
+P 4200 4500
+AR Path="/611650A5" Ref="C?"  Part="1" 
+AR Path="/611612DA/611650A5" Ref="C?"  Part="1" 
+F 0 "C?" H 4315 4637 50  0000 L CNN
+F 1 "47p" H 4315 4546 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4238 4350 50  0001 C CNN
+F 3 "~" H 4200 4500 50  0001 C CNN
+F 4 "16V" H 4315 4455 50  0000 L CNN "Value2"
+F 5 "X7R" H 4315 4364 50  0000 L CNN "Value3"
+	1    4200 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:USB_B J?
+U 1 1 611650AB
+P 2900 3850
+AR Path="/611650AB" Ref="J?"  Part="1" 
+AR Path="/611612DA/611650AB" Ref="J?"  Part="1" 
+F 0 "J?" H 2957 4317 50  0000 C CNN
+F 1 "USB_B" H 2957 4226 50  0000 C CNN
+F 2 "Connector_USB:USB_B_OST_USB-B1HSxx_Horizontal" H 3050 3800 50  0001 C CNN
+F 3 " ~" H 3050 3800 50  0001 C CNN
+	1    2900 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61168B65
+P 6600 4800
+F 0 "#PWR?" H 6600 4550 50  0001 C CNN
+F 1 "GND" H 6605 4627 50  0000 C CNN
+F 2 "" H 6600 4800 50  0001 C CNN
+F 3 "" H 6600 4800 50  0001 C CNN
+	1    6600 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 4650 6500 4750
+Wire Wire Line
+	6500 4750 6600 4750
+Wire Wire Line
+	6600 4750 6600 4800
+Wire Wire Line
+	6600 4750 6700 4750
+Wire Wire Line
+	6700 4750 6700 4650
+Connection ~ 6600 4750
+$Comp
+L power:GND #PWR?
+U 1 1 61169C53
+P 4050 4850
+F 0 "#PWR?" H 4050 4600 50  0001 C CNN
+F 1 "GND" H 4055 4677 50  0000 C CNN
+F 2 "" H 4050 4850 50  0001 C CNN
+F 3 "" H 4050 4850 50  0001 C CNN
+	1    4050 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3900 4650 3900 4750
+Wire Wire Line
+	4200 4750 4200 4650
+Text Label 3650 3950 2    50   ~ 0
+USB_1_D-
+Text Label 3650 3850 2    50   ~ 0
+USB_1_D+
+Wire Wire Line
+	4200 3850 4200 4350
+Wire Wire Line
+	3200 3850 4200 3850
+Wire Wire Line
+	4200 3850 4550 3850
+Connection ~ 4200 3850
+Wire Wire Line
+	4850 3850 5250 3850
+Wire Wire Line
+	5350 3950 5900 3950
+Wire Wire Line
+	5350 3850 5900 3850
+Wire Wire Line
+	5250 3950 4850 3950
+Wire Wire Line
+	5250 3850 5350 3950
+Wire Wire Line
+	5250 3950 5350 3850
+Text Label 5800 3850 2    50   ~ 0
+USB_2_D-
+Text Label 5800 3950 2    50   ~ 0
+USB_2_D+
+$Comp
+L power:GND #PWR?
+U 1 1 61185C32
+P 2850 4350
+F 0 "#PWR?" H 2850 4100 50  0001 C CNN
+F 1 "GND" H 2855 4177 50  0000 C CNN
+F 2 "" H 2850 4350 50  0001 C CNN
+F 3 "" H 2850 4350 50  0001 C CNN
+	1    2850 4350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2800 4250 2800 4300
+Wire Wire Line
+	2800 4300 2850 4300
+Wire Wire Line
+	2850 4300 2850 4350
+Wire Wire Line
+	2850 4300 2900 4300
+Wire Wire Line
+	2900 4300 2900 4250
+Connection ~ 2850 4300
+$Comp
+L power:+5V #PWR?
+U 1 1 6118716E
+P 3300 3300
+F 0 "#PWR?" H 3300 3150 50  0001 C CNN
+F 1 "+5V" H 3315 3473 50  0000 C CNN
+F 2 "" H 3300 3300 50  0001 C CNN
+F 3 "" H 3300 3300 50  0001 C CNN
+	1    3300 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 3650 3300 3650
+Wire Wire Line
+	3300 3650 3300 3300
+Wire Wire Line
+	3900 4750 4050 4750
+Wire Wire Line
+	4050 4750 4050 4850
+Connection ~ 4050 4750
+Wire Wire Line
+	4050 4750 4200 4750
+Wire Wire Line
+	3900 3950 3900 4350
+Connection ~ 3900 3950
+Wire Wire Line
+	3900 3950 4550 3950
+Wire Wire Line
+	3200 3950 3900 3950
+$Comp
+L Device:C C?
+U 1 1 611938BC
+P 6050 2600
+AR Path="/611938BC" Ref="C?"  Part="1" 
+AR Path="/611612DA/611938BC" Ref="C?"  Part="1" 
+F 0 "C?" H 6165 2737 50  0000 L CNN
+F 1 "4.7u" H 6165 2646 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 6088 2450 50  0001 C CNN
+F 3 "~" H 6050 2600 50  0001 C CNN
+F 4 "25V" H 6165 2555 50  0000 L CNN "Value2"
+F 5 "X7R" H 6165 2464 50  0000 L CNN "Value3"
+	1    6050 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61195755
+P 5500 2600
+AR Path="/61195755" Ref="C?"  Part="1" 
+AR Path="/611612DA/61195755" Ref="C?"  Part="1" 
+F 0 "C?" H 5615 2737 50  0000 L CNN
+F 1 "4.7u" H 5615 2646 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder" H 5538 2450 50  0001 C CNN
+F 3 "~" H 5500 2600 50  0001 C CNN
+F 4 "25V" H 5615 2555 50  0000 L CNN "Value2"
+F 5 "X7R" H 5615 2464 50  0000 L CNN "Value3"
+	1    5500 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61196FE9
+P 4950 2600
+AR Path="/61196FE9" Ref="C?"  Part="1" 
+AR Path="/611612DA/61196FE9" Ref="C?"  Part="1" 
+F 0 "C?" H 5065 2737 50  0000 L CNN
+F 1 "100n" H 5065 2646 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4988 2450 50  0001 C CNN
+F 3 "~" H 4950 2600 50  0001 C CNN
+F 4 "25V" H 5065 2555 50  0000 L CNN "Value2"
+F 5 "X7R" H 5065 2464 50  0000 L CNN "Value3"
+	1    4950 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 6119756B
+P 4400 2600
+AR Path="/6119756B" Ref="C?"  Part="1" 
+AR Path="/611612DA/6119756B" Ref="C?"  Part="1" 
+F 0 "C?" H 4515 2737 50  0000 L CNN
+F 1 "100n" H 4515 2646 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 4438 2450 50  0001 C CNN
+F 3 "~" H 4400 2600 50  0001 C CNN
+F 4 "25V" H 4515 2555 50  0000 L CNN "Value2"
+F 5 "X7R" H 4515 2464 50  0000 L CNN "Value3"
+	1    4400 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 611A0261
+P 4400 2250
+F 0 "#PWR?" H 4400 2100 50  0001 C CNN
+F 1 "+5V" H 4415 2423 50  0000 C CNN
+F 2 "" H 4400 2250 50  0001 C CNN
+F 3 "" H 4400 2250 50  0001 C CNN
+	1    4400 2250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 2450 4400 2350
+Wire Wire Line
+	4400 2350 4950 2350
+Wire Wire Line
+	4950 2350 4950 2450
+Wire Wire Line
+	4950 2350 5500 2350
+Wire Wire Line
+	5500 2350 5500 2450
+Connection ~ 4950 2350
+Wire Wire Line
+	6050 2350 6050 2450
+Connection ~ 5500 2350
+Wire Wire Line
+	4400 2250 4400 2350
+Connection ~ 4400 2350
+Wire Wire Line
+	4400 2750 4400 2850
+Wire Wire Line
+	4400 2850 4950 2850
+Wire Wire Line
+	4950 2850 4950 2750
+Wire Wire Line
+	4950 2850 5250 2850
+Wire Wire Line
+	5500 2850 5500 2750
+Connection ~ 4950 2850
+Wire Wire Line
+	5500 2850 6050 2850
+Wire Wire Line
+	6050 2850 6050 2750
+Connection ~ 5500 2850
+Wire Wire Line
+	5500 2350 6050 2350
+Connection ~ 6050 2350
+Wire Wire Line
+	6050 2350 6500 2350
+Wire Wire Line
+	6500 2350 6500 3250
+$Comp
+L power:GND #PWR?
+U 1 1 611A5DF9
+P 5250 2950
+F 0 "#PWR?" H 5250 2700 50  0001 C CNN
+F 1 "GND" H 5255 2777 50  0000 C CNN
+F 2 "" H 5250 2950 50  0001 C CNN
+F 3 "" H 5250 2950 50  0001 C CNN
+	1    5250 2950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5250 2850 5250 2950
+Connection ~ 5250 2850
+Wire Wire Line
+	5250 2850 5500 2850
+$Comp
+L power:+3.3VA #PWR?
+U 1 1 611A8920
+P 7100 2250
+F 0 "#PWR?" H 7100 2100 50  0001 C CNN
+F 1 "+3.3VA" H 7115 2423 50  0000 C CNN
+F 2 "" H 7100 2250 50  0001 C CNN
+F 3 "" H 7100 2250 50  0001 C CNN
+	1    7100 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 611A99B1
+P 7100 2600
+AR Path="/611A99B1" Ref="C?"  Part="1" 
+AR Path="/611612DA/611A99B1" Ref="C?"  Part="1" 
+F 0 "C?" H 7215 2737 50  0000 L CNN
+F 1 "100n" H 7215 2646 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 7138 2450 50  0001 C CNN
+F 3 "~" H 7100 2600 50  0001 C CNN
+F 4 "25V" H 7215 2555 50  0000 L CNN "Value2"
+F 5 "X7R" H 7215 2464 50  0000 L CNN "Value3"
+	1    7100 2600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 3250 6700 2350
+Wire Wire Line
+	6700 2350 7100 2350
+Wire Wire Line
+	7100 2350 7100 2450
+Wire Wire Line
+	7100 2250 7100 2350
+Connection ~ 7100 2350
+$Comp
+L power:GND #PWR?
+U 1 1 611ACC4D
+P 7100 2850
+F 0 "#PWR?" H 7100 2600 50  0001 C CNN
+F 1 "GND" H 7105 2677 50  0000 C CNN
+F 2 "" H 7100 2850 50  0001 C CNN
+F 3 "" H 7100 2850 50  0001 C CNN
+	1    7100 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 2850 7100 2750
+$Comp
+L power:+3.3VA #PWR?
+U 1 1 611AF903
+P 5800 3550
+F 0 "#PWR?" H 5800 3400 50  0001 C CNN
+F 1 "+3.3VA" V 5815 3677 50  0000 L CNN
+F 2 "" H 5800 3550 50  0001 C CNN
+F 3 "" H 5800 3550 50  0001 C CNN
+	1    5800 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3.3VA #PWR?
+U 1 1 611B03B1
+P 5800 4150
+F 0 "#PWR?" H 5800 4000 50  0001 C CNN
+F 1 "+3.3VA" V 5815 4277 50  0000 L CNN
+F 2 "" H 5800 4150 50  0001 C CNN
+F 3 "" H 5800 4150 50  0001 C CNN
+	1    5800 4150
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5800 4150 5900 4150
+Wire Wire Line
+	5800 3550 5900 3550
+Wire Wire Line
+	7300 3550 7750 3550
+Text GLabel 7750 3550 2    50   Output ~ 0
+FTDI_TX
+Text GLabel 7750 3650 2    50   Input ~ 0
+FTDI_RX
+Wire Wire Line
+	7300 3650 7750 3650
+NoConn ~ 7300 4050
+NoConn ~ 7300 4150
+NoConn ~ 7300 4250
+NoConn ~ 7300 4350
+NoConn ~ 7300 3750
+NoConn ~ 7300 3850
+Text Notes 4850 4900 0    50   ~ 0
+USB 2.0 lines must be\nrouted with 90ohms impedance.
+$EndSCHEMATC
