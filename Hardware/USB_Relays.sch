@@ -267,9 +267,9 @@ Wire Wire Line
 	2600 3400 3800 3400
 Wire Wire Line
 	2150 3400 2300 3400
-Text GLabel 5850 2800 2    50   Input ~ 0
+Text GLabel 5200 3700 2    50   Input ~ 0
 FTDI_TX
-Text GLabel 5850 2900 2    50   Output ~ 0
+Text GLabel 5200 3800 2    50   Output ~ 0
 FTDI_RX
 Wire Wire Line
 	5850 2800 4800 2800
@@ -287,9 +287,9 @@ Text GLabel 3400 3000 0    50   Output ~ 0
 RELAY_5
 Text GLabel 3400 3100 0    50   Output ~ 0
 RELAY_6
-Text GLabel 3400 3200 0    50   Output ~ 0
-RELAY_7
 Text GLabel 3400 3300 0    50   Output ~ 0
+RELAY_7
+Text GLabel 3400 3200 0    50   Output ~ 0
 RELAY_8
 Wire Wire Line
 	3400 2600 3800 2600
@@ -307,13 +307,13 @@ Wire Wire Line
 	3800 3200 3400 3200
 Wire Wire Line
 	3400 3300 3800 3300
-Text GLabel 3400 3500 0    50   Output ~ 0
-RELAY_9
-Text GLabel 3400 3600 0    50   Output ~ 0
-RELAY_10
-Text GLabel 3400 3700 0    50   Output ~ 0
-RELAY_11
 Text GLabel 3400 3800 0    50   Output ~ 0
+RELAY_9
+Text GLabel 3400 3700 0    50   Output ~ 0
+RELAY_10
+Text GLabel 3400 3600 0    50   Output ~ 0
+RELAY_11
+Text GLabel 3400 3500 0    50   Output ~ 0
 RELAY_12
 Wire Wire Line
 	3400 3500 3800 3500
@@ -323,13 +323,13 @@ Wire Wire Line
 	3400 3700 3800 3700
 Wire Wire Line
 	3800 3800 3400 3800
-Text GLabel 5200 3800 2    50   Output ~ 0
-RELAY_13
-Text GLabel 5200 3700 2    50   Output ~ 0
-RELAY_14
 Text GLabel 5200 3600 2    50   Output ~ 0
-RELAY_15
+RELAY_13
 Text GLabel 5200 3500 2    50   Output ~ 0
+RELAY_14
+Text GLabel 5850 2900 2    50   Output ~ 0
+RELAY_15
+Text GLabel 5850 2800 2    50   Output ~ 0
 RELAY_16
 Wire Wire Line
 	5200 3800 4800 3800
