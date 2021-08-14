@@ -40,10 +40,11 @@ $Comp
 L Connector_Generic:Conn_01x05 J17
 U 1 1 6116AD75
 P 6350 2300
-F 0 "J17" H 6430 2342 50  0000 L CNN
-F 1 "DNP" H 6430 2251 50  0000 L CNN
+F 0 "J17" H 6430 2387 50  0000 L CNN
+F 1 "JTAG" H 6430 2296 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical" H 6350 2300 50  0001 C CNN
 F 3 "~" H 6350 2300 50  0001 C CNN
+F 4 "DNP" H 6430 2205 50  0000 L CNN "Populate"
 	1    6350 2300
 	1    0    0    -1  
 $EndComp
@@ -393,6 +394,7 @@ F 0 "H2" H 2100 5599 50  0000 L CNN
 F 1 "MountingHole_Pad" H 2100 5508 50  0000 L CNN
 F 2 "MountingHole:MountingHole_4.5mm_Pad" H 2000 5550 50  0001 C CNN
 F 3 "~" H 2000 5550 50  0001 C CNN
+F 4 "DNP" H 2000 5550 50  0001 C CNN "Populate"
 	1    2000 5550
 	1    0    0    -1  
 $EndComp
@@ -404,6 +406,7 @@ F 0 "H1" H 1100 5599 50  0000 L CNN
 F 1 "MountingHole_Pad" H 1100 5508 50  0000 L CNN
 F 2 "MountingHole:MountingHole_4.5mm_Pad" H 1000 5550 50  0001 C CNN
 F 3 "~" H 1000 5550 50  0001 C CNN
+F 4 "DNP" H 1000 5550 50  0001 C CNN "Populate"
 	1    1000 5550
 	1    0    0    -1  
 $EndComp
@@ -415,6 +418,7 @@ F 0 "H3" H 3100 5599 50  0000 L CNN
 F 1 "MountingHole_Pad" H 3100 5508 50  0000 L CNN
 F 2 "MountingHole:MountingHole_4.5mm_Pad" H 3000 5550 50  0001 C CNN
 F 3 "~" H 3000 5550 50  0001 C CNN
+F 4 "DNP" H 3000 5550 50  0001 C CNN "Populate"
 	1    3000 5550
 	1    0    0    -1  
 $EndComp
@@ -426,6 +430,7 @@ F 0 "H4" H 4100 5599 50  0000 L CNN
 F 1 "MountingHole_Pad" H 4100 5508 50  0000 L CNN
 F 2 "MountingHole:MountingHole_4.5mm_Pad" H 4000 5550 50  0001 C CNN
 F 3 "~" H 4000 5550 50  0001 C CNN
+F 4 "DNP" H 4000 5550 50  0001 C CNN "Populate"
 	1    4000 5550
 	1    0    0    -1  
 $EndComp
