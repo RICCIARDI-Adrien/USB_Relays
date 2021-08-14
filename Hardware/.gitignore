@@ -1,3 +1,7 @@
 *-bak
+*.csv
+*.step
+*.xml
+Production_Files/
 fp-info-cache
 
