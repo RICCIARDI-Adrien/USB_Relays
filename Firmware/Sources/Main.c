@@ -3,6 +3,7 @@
  * @author Adrien RICCIARDI
  */
 #include <Relay.h>
+#include <UART.h>
 #include <xc.h>
 
 //-------------------------------------------------------------------------------------------------
@@ -24,10 +25,11 @@
 //-------------------------------------------------------------------------------------------------
 void main(void)
 {
-	unsigned char i = 15;
+	unsigned char c;
 
 	// Initialize modules
 	RelayInitialize();
+	UARTInitialize();
 
 	// TEST
 	ANSELBbits.ANSB0 = 0;
@@ -35,12 +37,10 @@ void main(void)
 
 	while (1)
 	{
-		RelaySetState(i, 0);
-		i++;
-		if (i >= RELAYS_COUNT) i = 0;
-		RelaySetState(i, 1);
+		c = UARTReadByte();
+		if ((c >= 'a') && (c <= 'z')) c -= 32;
+		UARTWriteByte(c);
 
 		LATBbits.LATB0 = !LATBbits.LATB0;
-		__delay_ms(1000);
 	}
 }
