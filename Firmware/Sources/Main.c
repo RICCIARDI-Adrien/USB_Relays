@@ -2,6 +2,7 @@
  * Entry point and main loop.
  * @author Adrien RICCIARDI
  */
+#include <Relay.h>
 #include <xc.h>
 
 //-------------------------------------------------------------------------------------------------
@@ -23,13 +24,23 @@
 //-------------------------------------------------------------------------------------------------
 void main(void)
 {
+	unsigned char i = 15;
+
+	// Initialize modules
+	RelayInitialize();
+
 	// TEST
 	ANSELBbits.ANSB0 = 0;
 	TRISBbits.TRISB0 = 0;
-	
+
 	while (1)
 	{
+		RelaySetState(i, 0);
+		i++;
+		if (i >= RELAYS_COUNT) i = 0;
+		RelaySetState(i, 1);
+
 		LATBbits.LATB0 = !LATBbits.LATB0;
-		__delay_ms(250);
+		__delay_ms(1000);
 	}
 }
