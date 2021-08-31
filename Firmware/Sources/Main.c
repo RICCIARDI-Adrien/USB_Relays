@@ -2,6 +2,7 @@
  * Entry point and main loop.
  * @author Adrien RICCIARDI
  */
+#include <Led.h>
 #include <Relay.h>
 #include <UART.h>
 #include <xc.h>
@@ -25,15 +26,12 @@
 //-------------------------------------------------------------------------------------------------
 void main(void)
 {
-	unsigned char c;
+	unsigned char c, i = 0;
 
 	// Initialize modules
 	RelayInitialize();
 	UARTInitialize();
-
-	// TEST
-	ANSELBbits.ANSB0 = 0;
-	TRISBbits.TRISB0 = 0;
+	LedInitialize();
 
 	while (1)
 	{
@@ -41,6 +39,7 @@ void main(void)
 		if ((c >= 'a') && (c <= 'z')) c -= 32;
 		UARTWriteByte(c);
 
-		LATBbits.LATB0 = !LATBbits.LATB0;
+		i = !i;
+		LedSetState(i);
 	}
 }
