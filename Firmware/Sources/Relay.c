@@ -141,6 +141,14 @@ void RelayInitialize(void)
 	TRISC &= 0x30;
 }
 
+unsigned char RelayGetState(unsigned char Relay_ID)
+{
+	// Make sure the provided relay ID is valid
+	if (Relay_ID >= RELAYS_COUNT) return 0;
+
+	return Relays[Relay_ID].Is_Enabled;
+}
+
 void RelaySetState(unsigned char Relay_ID, unsigned char Is_Enabled)
 {
 	TRelay *Pointer_Relay;

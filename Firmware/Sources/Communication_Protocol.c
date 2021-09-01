@@ -51,7 +51,7 @@ static unsigned char Command_Payload_Sizes[] =
 	// 'F'
 	0,
 	// 'G'
-	0,
+	2,
 	// 'H'
 	0,
 	// 'I'
@@ -105,6 +105,27 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 
 	switch (Command_Code)
 	{
+		// Get relay state
+		case 'G':
+			// Retrieve relay ID from payload
+			// Make sure digits are provided
+			if (!isdigit(Pointer_String_Payload[0]) || !isdigit(Pointer_String_Payload[1]))
+			{
+				strcpy(String_Answer, "KO");
+				break;
+			}
+			Relay_ID = atoi(Pointer_String_Payload);
+			// Make sure relay ID is in the allowed range (from 1 to RELAYS_COUNT)
+			if ((Relay_ID < 1) || (Relay_ID > RELAYS_COUNT))
+			{
+				strcpy(String_Answer, "KO");
+				break;
+			}
+			// Payload is valid, execute the command
+			String_Answer[0] = RelayGetState(Relay_ID - 1) + '0'; // Relay IDs are zero-based, convert the return value to an ASCII digit
+			String_Answer[1] = 0; // Terminate the string
+			break;
+
 		// Set relay state
 		case 'S':
 			// Retrieve relay ID from payload
