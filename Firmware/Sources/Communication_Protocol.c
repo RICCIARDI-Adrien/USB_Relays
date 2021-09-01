@@ -6,6 +6,7 @@
 #include <Configuration.h>
 #include <ctype.h>
 #include <Relay.h>
+#include <stdlib.h>
 #include <string.h>
 #include <UART.h>
 
@@ -74,7 +75,7 @@ static unsigned char Command_Payload_Sizes[] =
 	// 'R'
 	0,
 	// 'S'
-	0,
+	2,
 	// 'T'
 	0,
 	// 'U'
@@ -100,10 +101,31 @@ static unsigned char Command_Payload_Sizes[] =
  */ 
 static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsigned char *Pointer_String_Payload)
 {
-	unsigned char String_Answer[8];
+	unsigned char String_Answer[8], Relay_ID;
 
 	switch (Command_Code)
 	{
+		// Set relay state
+		case 'S':
+			// Retrieve relay ID from payload
+			// Make sure digits are provided
+			if (!isdigit(Pointer_String_Payload[0]) || !isdigit(Pointer_String_Payload[1]))
+			{
+				strcpy(String_Answer, "KO");
+				break;
+			}
+			Relay_ID = atoi(Pointer_String_Payload);
+			// Make sure relay ID is in the allowed range (from 1 to RELAYS_COUNT)
+			if ((Relay_ID < 1) || (Relay_ID > RELAYS_COUNT))
+			{
+				strcpy(String_Answer, "KO");
+				break;
+			}
+			// Payload is valid, execute the command
+			RelaySetState(Relay_ID - 1, 1); // Relay IDs are zero-based
+			strcpy(String_Answer, "OK");
+			break;
+
 		// Get firmware version
 		case 'V':
 			strcpy(String_Answer, CONFIGURATION_FIRMWARE_VERSION_STRING);
@@ -125,7 +147,7 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 //-------------------------------------------------------------------------------------------------
 void CommunicationProtocolProcessCommands(void)
 {
-	unsigned char Character, Command_Code, Payload_Size, String_Payload[4];
+	unsigned char Character, Command_Code, Payload_Size, String_Payload[4], Payload_Index;
 	TCommunicationProtocolState State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_MAGIC_NUMBER;
 
 	while (1)
@@ -156,8 +178,32 @@ void CommunicationProtocolProcessCommands(void)
 				Command_Code = Character;
 				Payload_Size = Command_Payload_Sizes[Command_Code - 'A']; // Look-up table starts from 0
 				// Is there any payload to be received ?
-				if (Payload_Size > 0) State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_PAYLOAD; // TODO
+				if (Payload_Size > 0)
+				{
+					Payload_Index = 0;
+					State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_PAYLOAD;
+				}
 				else State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_CARRIAGE_RETURN;
+				break;
+
+			case COMMUNICATION_PROTOCOL_STATE_RECEIVE_PAYLOAD:
+				// Should the command be aborted ?
+				if (Character == COMMUNICATION_PROTOCOL_ABORT_CHARACTER)
+				{
+					State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_MAGIC_NUMBER;
+					break;
+				}
+				// Store payload
+				String_Payload[Payload_Index] = Character;
+				Payload_Index++;
+				Payload_Size--;
+				// Was payload fully received ?
+				if (Payload_Size == 0)
+				{
+					// Terminate string
+					String_Payload[Payload_Index] = 0;
+					State = COMMUNICATION_PROTOCOL_STATE_RECEIVE_CARRIAGE_RETURN;
+				}
 				break;
 
 			case COMMUNICATION_PROTOCOL_STATE_RECEIVE_CARRIAGE_RETURN:
