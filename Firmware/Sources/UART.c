@@ -49,3 +49,12 @@ void UARTWriteByte(unsigned char Data)
 	// Transmit the byte
 	TX1REG = Data;
 }
+
+void UARTWriteString(unsigned char *Pointer_String)
+{
+	while (*Pointer_String)
+	{
+		UARTWriteByte(*Pointer_String);
+		Pointer_String++;
+	}
+}

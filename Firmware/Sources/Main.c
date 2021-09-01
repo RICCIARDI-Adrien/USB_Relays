@@ -2,6 +2,7 @@
  * Entry point and main loop.
  * @author Adrien RICCIARDI
  */
+#include <Communication_Protocol.h>
 #include <Led.h>
 #include <Relay.h>
 #include <UART.h>
@@ -26,20 +27,24 @@
 //-------------------------------------------------------------------------------------------------
 void main(void)
 {
-	unsigned char c, i = 0;
+	unsigned char Is_Led_Lighted = 0;
 
 	// Initialize modules
 	RelayInitialize();
 	UARTInitialize();
 	LedInitialize();
 
+	// Turn led on now that everything is up and running
+	LedSetState(1);
+
+	// Process each received command, this function does not return
+	CommunicationProtocolProcessCommands();
+
+	// Do not execute random code in case something went wrong, instead make the led blinks to tell user
 	while (1)
 	{
-		c = UARTReadByte();
-		if ((c >= 'a') && (c <= 'z')) c -= 32;
-		UARTWriteByte(c);
-
-		i = !i;
-		LedSetState(i);
+		LedSetState(Is_Led_Lighted);
+		Is_Led_Lighted = !Is_Led_Lighted;
+		__delay_ms(250);
 	}
 }
