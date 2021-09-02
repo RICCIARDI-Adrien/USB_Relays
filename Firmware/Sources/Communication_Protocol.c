@@ -44,7 +44,7 @@ static unsigned char Command_Payload_Sizes[] =
 	// 'B'
 	0,
 	// 'C'
-	2,
+	0,
 	// 'D'
 	0,
 	// 'E'
@@ -76,7 +76,7 @@ static unsigned char Command_Payload_Sizes[] =
 	// 'R'
 	0,
 	// 'S'
-	2,
+	3,
 	// 'T'
 	0,
 	// 'U'
@@ -102,31 +102,10 @@ static unsigned char Command_Payload_Sizes[] =
  */ 
 static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsigned char *Pointer_String_Payload)
 {
-	unsigned char String_Answer[8], Temporary_Byte;
+	unsigned char String_Answer[8], Relay_ID, Temporary_Byte;
 
 	switch (Command_Code)
 	{
-		// Clear relay state
-		case 'C':
-			// Retrieve relay ID from payload
-			// Make sure digits are provided
-			if (!isdigit(Pointer_String_Payload[0]) || !isdigit(Pointer_String_Payload[1]))
-			{
-				strcpy(String_Answer, "KO");
-				break;
-			}
-			Temporary_Byte = atoi(Pointer_String_Payload);
-			// Make sure relay ID is in the allowed range (from 1 to RELAYS_COUNT)
-			if ((Temporary_Byte < 1) || (Temporary_Byte > RELAYS_COUNT))
-			{
-				strcpy(String_Answer, "KO");
-				break;
-			}
-			// Payload is valid, execute the command
-			RelaySetState(Temporary_Byte - 1, 0); // Relay IDs are zero-based
-			strcpy(String_Answer, "OK");
-			break;
-
 		// Get relay state
 		case 'G':
 			// Retrieve relay ID from payload
@@ -136,15 +115,15 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 				strcpy(String_Answer, "KO");
 				break;
 			}
-			Temporary_Byte = atoi(Pointer_String_Payload);
+			Relay_ID = atoi(Pointer_String_Payload);
 			// Make sure relay ID is in the allowed range (from 1 to RELAYS_COUNT)
-			if ((Temporary_Byte < 1) || (Temporary_Byte > RELAYS_COUNT))
+			if ((Relay_ID < 1) || (Relay_ID > RELAYS_COUNT))
 			{
 				strcpy(String_Answer, "KO");
 				break;
 			}
 			// Payload is valid, execute the command
-			String_Answer[0] = RelayGetState(Temporary_Byte - 1) + '0'; // Relay IDs are zero-based, convert the return value to an ASCII digit
+			String_Answer[0] = RelayGetState(Relay_ID - 1) + '0'; // Relay IDs are zero-based, convert the return value to an ASCII digit
 			String_Answer[1] = 0; // Terminate the string
 			break;
 
@@ -165,22 +144,31 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 
 		// Set relay state
 		case 'S':
-			// Retrieve relay ID from payload
-			// Make sure digits are provided
+			// Make sure only digits are provided for the relay ID
 			if (!isdigit(Pointer_String_Payload[0]) || !isdigit(Pointer_String_Payload[1]))
 			{
 				strcpy(String_Answer, "KO");
 				break;
 			}
-			Temporary_Byte = atoi(Pointer_String_Payload);
+			// Make sure the relay state value is in the allowed range
+			Temporary_Byte = Pointer_String_Payload[2];
+			if ((Temporary_Byte < '0') || (Temporary_Byte > '1'))
+			{
+				strcpy(String_Answer, "KO");
+				break;
+			}
+			Temporary_Byte -= '0'; // Convert to binary value
+			// Retrieve relay ID from payload
+			Pointer_String_Payload[2] = 0; // Terminate the string just after the relay ID digits, so atoi() can be directly called, this will work because relay state value is saved to Temporary_Byte variable 
+			Relay_ID = atoi(Pointer_String_Payload);
 			// Make sure relay ID is in the allowed range (from 1 to RELAYS_COUNT)
-			if ((Temporary_Byte < 1) || (Temporary_Byte > RELAYS_COUNT))
+			if ((Relay_ID < 1) || (Relay_ID > RELAYS_COUNT))
 			{
 				strcpy(String_Answer, "KO");
 				break;
 			}
 			// Payload is valid, execute the command
-			RelaySetState(Temporary_Byte - 1, 1); // Relay IDs are zero-based
+			RelaySetState(Relay_ID - 1, Temporary_Byte); // Relay IDs are zero-based
 			strcpy(String_Answer, "OK");
 			break;
 
