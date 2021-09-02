@@ -135,7 +135,7 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 				"    'xx' is the relay ID, from 1 to 16.\r\n"
 				"  - Display this help : #H\r\n"
 				"  - Set led state : #Lv\r\n"
-				"    'v' is the led state value (0 to turn off, 1 to turn on).\r\n"
+				"    'v' is the led state value (0 to turn off, 1 to turn on, 2 to make it blink).\r\n"
 				"  - Set relay state : #Sxxv\r\n"
 				"    'xx' is the relay ID, from 1 to 16.\r\n"
 				"    'v' is the relay state value (0 to clear, 1 to set).\r\n"
@@ -150,7 +150,7 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 		case 'L':
 			// Retrieve state from payload
 			Temporary_Byte = Pointer_String_Payload[0];
-			if ((Temporary_Byte < '0') || (Temporary_Byte > '1'))
+			if ((Temporary_Byte < '0') || (Temporary_Byte > '2'))
 			{
 				strcpy(String_Answer, "KO");
 				break;

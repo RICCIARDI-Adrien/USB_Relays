@@ -23,6 +23,15 @@
 #pragma config CPD = OFF, CP = OFF // Disable data EEPROM code protection, disable program memory code protection
 
 //-------------------------------------------------------------------------------------------------
+// Private functions
+//-------------------------------------------------------------------------------------------------
+/** Called everytime an enabled interrupt fires. */
+static void __interrupt MainInterruptHandler(void)
+{
+	if (LED_IS_INTERRUPT_PENDING()) LedInterruptHandler();
+}
+
+//-------------------------------------------------------------------------------------------------
 // Entry point
 //-------------------------------------------------------------------------------------------------
 void main(void)
@@ -34,17 +43,21 @@ void main(void)
 	UARTInitialize();
 	LedInitialize();
 
-	// Turn led on now that everything is up and running
-	LedSetState(1);
+	// Enable interrupts
+	INTCONbits.PEIE = 1;
+	INTCONbits.GIE = 1;
+
+	// Turn led on to tell user that everything is up and running
+	LedSetState(LED_STATE_ON);
 
 	// Process each received command, this function does not return
 	CommunicationProtocolProcessCommands();
 
-	// Do not execute random code in case something went wrong, instead make the led blinks to tell user
+	// Do not execute random code in case something went wrong, instead make the led blinks with an unusual frequency to tell user
 	while (1)
 	{
 		LedSetState(Is_Led_Lighted);
 		Is_Led_Lighted = !Is_Led_Lighted;
-		__delay_ms(250);
+		__delay_ms(150);
 	}
 }
