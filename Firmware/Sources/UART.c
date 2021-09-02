@@ -50,7 +50,7 @@ void UARTWriteByte(unsigned char Data)
 	TX1REG = Data;
 }
 
-void UARTWriteString(unsigned char *Pointer_String)
+void UARTWriteString(const unsigned char *Pointer_String)
 {
 	while (*Pointer_String)
 	{

@@ -24,6 +24,6 @@ void UARTWriteByte(unsigned char Data);
 /** Transmit an ASCIIZ string over the UART.
  * @param Pointer_String The string to send, it must be zero-terminated.
  */
-void UARTWriteString(unsigned char *Pointer_String);
+void UARTWriteString(const unsigned char *Pointer_String);
 
 #endif

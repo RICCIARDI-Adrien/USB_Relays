@@ -127,6 +127,25 @@ static void CommunicationProtocolExecuteCommand(unsigned char Command_Code, unsi
 			String_Answer[1] = 0; // Terminate the string
 			break;
 
+		// Display help
+		case 'H':
+			UARTWriteString("--- USB relays by Adrien RICCIARDI ---\r\n"
+				"Commands :\r\n"
+				"  - Get a relay state : #Gxx\r\n"
+				"    'xx' is the relay ID, from 1 to 16.\r\n"
+				"  - Display this help : #H\r\n"
+				"  - Set led state : #Lv\r\n"
+				"    'v' is the led state value (0 to turn off, 1 to turn on).\r\n"
+				"  - Set relay state : #Sxxv\r\n"
+				"    'xx' is the relay ID, from 1 to 16.\r\n"
+				"    'v' is the relay state value (0 to clear, 1 to set).\r\n"
+				"  - Get firmware version : #V\r\n"
+				"Useful information :\r\n"
+				"  - Write the '!' character at any time to discard everything that was written before.\r\n"
+			    "  - A command that do not return a specific result will return 'OK' on success or 'KO' if a parameter is bad.\r\n");
+			// The answer has been displayed, no need to display more text
+			return;
+
 		// Set led state
 		case 'L':
 			// Retrieve state from payload
