@@ -31,7 +31,7 @@ sleep 5
 echo "Stopping led blinking..."
 echo "#L1" > $Serial_Port
 # Give some time to the board to process the command and send the answer
-sleep 0.5
+sleep 0.1
 
 for i in $(seq 1 16)
 do
@@ -44,7 +44,37 @@ do
 	echo "Tuning relay $i off..."
 	echo "#S${Relay_ID}0" > $Serial_Port
 	# Give some time to the board to process the command and send the answer
-	sleep 0.5
+	sleep 0.1
 done
+
+echo "Turning all relays on for 5 seconds..."
+for i in $(seq 1 16)
+do
+	Relay_ID=$(printf "%02d" $i)
+
+	echo "#S${Relay_ID}1" > $Serial_Port
+	# Give some time to the board to process the command and send the answer
+	sleep 0.1
+done
+sleep 5
+
+echo "Turning all relays off..."
+for i in $(seq 1 16)
+do
+	Relay_ID=$(printf "%02d" $i)
+
+	echo "#S${Relay_ID}0" > $Serial_Port
+	# Give some time to the board to process the command and send the answer
+	sleep 0.1
+done
+
+echo "Making led blink for 3 seconds to tell that tests are terminated..."
+echo "#L2" > $Serial_Port
+sleep 3
+
+echo "Stopping led blinking..."
+echo "#L1" > $Serial_Port
+# Give some time to the board to process the command and send the answer
+sleep 0.1
 
 echo "All tests terminated."
