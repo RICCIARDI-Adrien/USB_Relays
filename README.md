@@ -28,3 +28,18 @@ Commands :
     'v' is the relay state value (0 to clear, 1 to set).
   - Get firmware version : #V
 ```
+
+## Photo gallery
+
+### Casing plates
+
+Plates are made of 4mm-thick 304 stainless steel.
+![Casing plates](Resources/Pictures/Casing_Plates.jpg)
+
+### PCB
+
+PCB top view :
+![PCB top view](Resources/Pictures/PCB_Top_View.jpg)
+
+PCB bottom view :
+![PCB bottom view](Resources/Pictures/PCB_Bottom_View.jpg)
