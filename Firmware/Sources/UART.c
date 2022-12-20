@@ -21,12 +21,12 @@ void UARTInitialize(void)
 	TRISCbits.TRISC4 = 0; // Set TX as output, even if this pin direction is automatically handled by the UART module
 	TRISCbits.TRISC5 = 1; // Set RX pin as input
 
-	// Set a 9600 bit/s baud rate
-	BAUD1CON = 0; // Idle state for transmit is a high level (default value), use 8-bit baud rate generator, disable wake-up function, disable auto-baud detection
-	SPBRG = 51; // Results in 0.16% deviation
+	// Set a 115200 bit/s baud rate
+	BAUD1CON = 0x08; // Idle state for transmit is a high level (default value), use 16-bit baud rate generator, disable wake-up function, disable auto-baud detection
+	SPBRG = 68; // Results in 0.64% deviation
 
 	// Configure UART module
-	TX1STA = 0x20; // Select 8-bit transmission, enable transmission, select asynchronous mode, use 8-bit baud rate generator
+	TX1STA = 0x24; // Select 8-bit transmission, enable transmission, select asynchronous mode, select high baud rate
 	RC1STA = 0x90; // Enable serial port, select 8-bit reception, enable continuous reception
 }
 
