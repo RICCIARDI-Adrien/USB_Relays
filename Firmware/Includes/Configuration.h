@@ -9,6 +9,6 @@
 // Constants
 //-------------------------------------------------------------------------------------------------
 /** The firmware version as a string. */
-#define CONFIGURATION_FIRMWARE_VERSION_STRING "1.0"
+#define CONFIGURATION_FIRMWARE_VERSION_STRING "1.1"
 
 #endif
