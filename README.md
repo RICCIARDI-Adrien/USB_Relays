@@ -4,6 +4,9 @@ Control separately 16 signal relays through a PC by using a standard USB connect
 Each relay can switch up to 3A at 24VDC (warning : this board is not designed for AC current).  
 There is no need for a separate power supply to power the board, it is designed to be fully powered by the USB connection (that's why small relays are used).
 
+![Assembled casing side view](Resources/Pictures/Assembled_Casing_Side_View_1.jpg)
+![Assembled casing side view](Resources/Pictures/Assembled_Casing_Side_View_2.jpg)
+
 ## Communication protocol
 
 * The board provides an USB serial port with the following settings : **9600 bits/s, no parity, 1 stop bit**.
@@ -38,8 +41,27 @@ Plates are made of 4mm-thick 304 stainless steel.
 
 ### PCB
 
-PCB top view :
-![PCB top view](Resources/Pictures/PCB_Top_View.jpg)
+PCB top :
+![PCB top view](Resources/Pictures/Naked_PCB_Top_View.jpg)
 
-PCB bottom view :
-![PCB bottom view](Resources/Pictures/PCB_Bottom_View.jpg)
+PCB bottom :
+![PCB bottom view](Resources/Pictures/Naked_PCB_Bottom_View.jpg)
+
+### Assembled PCB
+
+Assembled PCB top :
+![Assembled PCB top view](Resources/Pictures/Assembled_PCB_Top_View.jpg)
+
+Assembled PCB bottom :
+![Assembled PCB bottom view](Resources/Pictures/Assembled_PCB_Bottom_View.jpg)
+
+### Casing assembly
+
+Screwing the bolts on the casing lower steel plate :
+![Lower plate with screws](Resources/Pictures/Lower_Plate_With_Screws.jpg)
+
+Fixing the PCB :
+![Lower plate with screwed PCB](Resources/Pictures/Lower_Plate_With_Screwed_PCB.jpg)
+
+Fixing the casing upper steel plate :
+![Assembled casing top view](Resources/Pictures/Assembled_Casing_Top_View.jpg)
