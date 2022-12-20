@@ -14,7 +14,7 @@ echo "| USB relays board tests |"
 echo "+------------------------+"
 
 echo "Configuring serial port..."
-stty -F $Serial_Port 9600
+stty -F $Serial_Port 115200
 
 echo "Turning led off for 2 seconds..."
 echo "#L0" > $Serial_Port
