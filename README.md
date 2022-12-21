@@ -9,8 +9,8 @@ There is no need for a separate power supply to power the board, it is designed 
 
 ## Communication protocol
 
-* The board provides an USB serial port with the following settings : **9600 bits/s, no parity, 1 stop bit**.
-* All commands are ASCII-only to allow to easily use the board with a simple serial port terminal like `Putty`, `minicom`, `picocom`, etc. If you plan to send commands manually, enable local echo and send CRLF when pressing enter key (see below). Here is an example picocom command invocation : `picocom --echo --omap crcrlf -b 9600 /dev/ttyUSB0`.
+* The board provides an USB serial port with the following settings : **115200 bits/s, no parity, 1 stop bit**.
+* All commands are ASCII-only to allow to easily use the board with a simple serial port terminal like `Putty`, `minicom`, `picocom`, etc. If you plan to send commands manually, enable local echo and send CRLF when pressing enter key (see below). Here is an example picocom command invocation : `picocom --echo --omap crcrlf -b 115200 /dev/ttyUSB0`.
 * All commands start with the character `#`. This way, if you mess up and write the commands into an UNIX terminal, they will be interpreted as comments.
 * All commands end with CRLF characters (`\r\n`), so you only have to press `enter` key to send the command to the board.
 * All commands sent to the board return an answer, the board will ignore all other commands while it is processing the current one. This allows to throttle a fast PC sending too much commands at a time, it must wait for each command answer before sending the next one.
